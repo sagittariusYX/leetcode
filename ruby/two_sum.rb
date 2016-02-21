@@ -2,10 +2,8 @@
 # @param {Integer} target
 # @return {Integer[]}
 def two_sum(nums, target)
-  nums.each_with_index do |item, index|
-    nums.shift(item)
-    if nums.include?(target - item)
-      return [index, nums.index(target - item)]
-    end
-  end
+  hash = Hash.new
+  nums.each_with_index {|n,i| return [hash[n]-1,i] if hash[n] != nil; hash[target-n] = i + 1 }
 end
+
+# 通过减法和index来查找目标值
