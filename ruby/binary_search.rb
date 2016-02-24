@@ -2,7 +2,8 @@ def search_middle(arr, key)
   left, right = 0, arr.size - 1
 
   while left <= right
-    middle = left + (right - left)/2
+    # bit operation to optimize effection
+    middle = left + ((right - left) >> 1)
     if arr[middle] > key
       right = middle - 1
     elsif arr[middle] < key
