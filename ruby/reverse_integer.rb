@@ -1,16 +1,24 @@
 # @param {Integer} x
 # @return {Integer}
 def reverse(x)
-  result = x.to_s.reverse.to_i
-  result = 0 - result if x < 0
+  if x < 0
+    sign = -1
+  else
+    sign = 1
+  end
+  result, x = 0, x.abs
+
+  until x.zero?
+    result = result * 10 + x % 10
+    x /= 10
+  end
 
   if result <= 2147483647 and result >= -2147483648
-    return result
+    return result * sign
   else
     return 0
   end
 end
-
 
 # Have you thought about this?
 # Here are some good questions to ask before coding. Bonus points for you if you have already thought through this!
