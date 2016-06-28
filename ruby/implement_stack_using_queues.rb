@@ -9,27 +9,17 @@ class Stack
   def push(x)
     if @q1.empty?
       @q2 << x
-      return
+    else
+      @q1 << x
     end
-
-    @q1 << x
-    return
   end
 
   # @return {void}
   def pop
     if @q1.empty?
-      while true
-        e = @q2.shift
-        return if @q2.empty?
-        @q1 << e
-      end
-    end
-
-    while true
-      e = @q1.shift
-      return if @q1.empty?
-      @q2 << e
+      _pop(@q2, @q1)
+    else
+      _pop(@q1, @q2)
     end
   end
 
@@ -53,6 +43,14 @@ class Stack
   # @return {Boolean}
   def empty
     @q1.empty? && @q2.empty?
+  end
+
+  private def _pop(normal_queue, empty_queue)
+    until normal_queue.size == 1
+      empty_queue << normal_queue.shift
+    end
+
+    normal_queue.shift
   end
 end
 
