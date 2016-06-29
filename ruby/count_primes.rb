@@ -3,7 +3,7 @@
 def count_primes(n)
   return 0 if n < 2
 
-  mark = Array.new(true, n)
+  mark = [true] * n
   mark[0], mark[1] = false, false
 
   2.upto(Math.sqrt(n)) do |i|
