@@ -31,5 +31,3 @@ def next_permutation(nums)
   end
   nums
 end
-
-p next_permutation([1,2,3])
